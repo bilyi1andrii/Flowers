@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class FlowerPack {
-    public Flower flower;
+    private Flower flower;
     private int count;
 
     public FlowerPack(Flower flower, int count) {
