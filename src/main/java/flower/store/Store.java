@@ -9,16 +9,13 @@ import lombok.Setter;
 public class Store {
     private List<FlowerBucket> flowerBuckets;
 
-
     public List<FlowerPack> searchFlowerBucket(
     FlowerType flowerType,
     FlowerColor color,
     double minPrice,
     double maxPrice,
     int minSepalLength,
-    int maxSepalLength,
-    int minCount,
-    int maxCount
+    int maxSepalLength
 ) {
     List<FlowerPack> matchingPacks = new ArrayList<>();
 
@@ -28,9 +25,7 @@ public class Store {
             if ((flowerType == null || flower.getFlowerType() == flowerType) &&
                 (color == null || flower.getColor().equals(color.toString())) &&
                 (flower.getPrice() >= minPrice && flower.getPrice() <= maxPrice) &&
-                (flower.getSepalLength() >= minSepalLength &&
-                flower.getSepalLength() <= maxSepalLength) &&
-                (flowerPack.getCount() >= minCount && flowerPack.getCount() <= maxCount)) {
+                (flower.getSepalLength() >= minSepalLength && flower.getSepalLength() <= maxSepalLength)) {
                 matchingPacks.add(flowerPack);
             }
         }
