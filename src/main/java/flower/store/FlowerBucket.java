@@ -21,4 +21,8 @@ public class FlowerBucket {
         }
         return price;
     }
+
+    public List<FlowerPack> getFlowerPacks() {
+        return flowerPacks;
+    }
 }
