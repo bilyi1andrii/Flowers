@@ -41,16 +41,20 @@ public class StoreTest {
         // First bucket with Roses and Chamomiles
         FlowerBucket roseAndChamomileBucket = new FlowerBucket();
         roseAndChamomileBucket.addFlowerPack(new FlowerPack(
-            new Flower(FlowerColor.RED, 10, PRICE_ROSE, FlowerType.ROSE), COUNT_ROSE));
+            new Flower(FlowerColor.RED, 10,
+            PRICE_ROSE, FlowerType.ROSE), COUNT_ROSE));
         roseAndChamomileBucket.addFlowerPack(new FlowerPack(
-            new Flower(FlowerColor.YELLOW, SEPAL_LENGTH_SMALL, PRICE_CHAMOMILE, FlowerType.CHAMOMILE), COUNT_CHAMOMILE));
+            new Flower(FlowerColor.YELLOW, SEPAL_LENGTH_SMALL,
+            PRICE_CHAMOMILE, FlowerType.CHAMOMILE), COUNT_CHAMOMILE));
 
         // Second bucket with Tulips and Roses
         FlowerBucket tulipAndRoseBucket = new FlowerBucket();
         tulipAndRoseBucket.addFlowerPack(new FlowerPack(
-            new Flower(FlowerColor.WHITE, SEPAL_LENGTH_LARGE, PRICE_TULIP, FlowerType.TULIP), COUNT_TULIP));
+            new Flower(FlowerColor.WHITE, SEPAL_LENGTH_LARGE, PRICE_TULIP,
+            FlowerType.TULIP), COUNT_TULIP));
         tulipAndRoseBucket.addFlowerPack(new FlowerPack(
-            new Flower(FlowerColor.RED, 9, HIGH_PRICE, FlowerType.ROSE), MIN_COUNT));
+            new Flower(FlowerColor.RED, 9,
+            HIGH_PRICE, FlowerType.ROSE), MIN_COUNT));
 
         buckets.add(roseAndChamomileBucket);
         buckets.add(tulipAndRoseBucket);
@@ -62,7 +66,8 @@ public class StoreTest {
     public void testSearchByFlowerType() {
         // Search for ROSE flower packs
         List<FlowerPack> result = store.searchFlowerBucket(
-            FlowerType.ROSE, null, 0, MAX_PRICE, MIN_SEPAL_LENGTH, MAX_SEPAL_LENGTH
+            FlowerType.ROSE, null, 0,
+            MAX_PRICE, MIN_SEPAL_LENGTH, MAX_SEPAL_LENGTH
         );
 
         // Expecting 2 packs with ROSE
@@ -75,7 +80,8 @@ public class StoreTest {
     public void testSearchByColor() {
         // Search for RED flowers
         List<FlowerPack> result = store.searchFlowerBucket(
-            null, FlowerColor.RED, 0, MAX_PRICE, MIN_SEPAL_LENGTH, MAX_SEPAL_LENGTH
+            null, FlowerColor.RED, 0,
+            MAX_PRICE, MIN_SEPAL_LENGTH, MAX_SEPAL_LENGTH
         );
 
         // Expecting 2 packs with RED flowers
@@ -88,40 +94,50 @@ public class StoreTest {
     public void testSearchByPriceRange() {
         // Search for flowers with prices between 20 and 40
         List<FlowerPack> result = store.searchFlowerBucket(
-            null, null, LOW_PRICE, HIGH_PRICE, MIN_SEPAL_LENGTH, MAX_SEPAL_LENGTH
+            null, null,
+            LOW_PRICE, HIGH_PRICE, MIN_SEPAL_LENGTH,
+            MAX_SEPAL_LENGTH
         );
 
         // Expecting 3 packs within this price range
         Assertions.assertEquals(3, result.size());
         Assertions.assertTrue(result.stream().allMatch(pack ->
-            pack.getFlower().getPrice() >= LOW_PRICE && pack.getFlower().getPrice() <= HIGH_PRICE));
+            pack.getFlower().getPrice() >= LOW_PRICE
+            && pack.getFlower().getPrice() <= HIGH_PRICE));
     }
 
     @Test
     public void testSearchBySepalLengthRange() {
         // Search for flowers with sepal lengths between 8 and 10
         List<FlowerPack> result = store.searchFlowerBucket(
-            null, null, 0, MAX_PRICE, SEPAL_LENGTH_SMALL, 10
+            null, null, 0,
+            MAX_PRICE, SEPAL_LENGTH_SMALL, 10
         );
 
         // Expecting 3 packs with sepal lengths in this range
         Assertions.assertEquals(3, result.size());
         Assertions.assertTrue(result.stream().allMatch(pack ->
-            pack.getFlower().getSepalLength() >= SEPAL_LENGTH_SMALL && pack.getFlower().getSepalLength() <= 10));
+            pack.getFlower().getSepalLength() >= SEPAL_LENGTH_SMALL
+            && pack.getFlower().getSepalLength() <= 10));
     }
 
     @Test
     public void testSearchWithMultipleCriteria() {
         // Search for RED ROSE flowers with prices between 30 and 40
         List<FlowerPack> result = store.searchFlowerBucket(
-            FlowerType.ROSE, FlowerColor.RED, PRICE_ROSE, HIGH_PRICE, MIN_SEPAL_LENGTH, MAX_SEPAL_LENGTH
+            FlowerType.ROSE, FlowerColor.RED,
+            PRICE_ROSE, HIGH_PRICE, MIN_SEPAL_LENGTH,
+            MAX_SEPAL_LENGTH
         );
 
         // Expecting 2 packs that match all the criteria
         Assertions.assertEquals(2, result.size());
         FlowerPack pack = result.get(0);
-        Assertions.assertEquals(FlowerType.ROSE, pack.getFlower().getFlowerType());
-        Assertions.assertEquals("#FF0000", pack.getFlower().getColor());
-        Assertions.assertTrue(pack.getFlower().getPrice() >= PRICE_ROSE && pack.getFlower().getPrice() <= HIGH_PRICE);
+        Assertions.assertEquals(FlowerType.ROSE,
+        pack.getFlower().getFlowerType());
+        Assertions.assertEquals("#FF0000",
+        pack.getFlower().getColor());
+        Assertions.assertTrue(pack.getFlower().getPrice() >= PRICE_ROSE
+        && pack.getFlower().getPrice() <= HIGH_PRICE);
     }
 }

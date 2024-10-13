@@ -55,7 +55,8 @@ public class FlowerTest {
 
     @Test
     public void testConstructor() {
-        Flower newFlower = new Flower(COLOR_RED, SEPAL_LENGTH_LARGE, PRICE_HIGH, TYPE_TULIP);
+        Flower newFlower = new Flower(COLOR_RED,
+        SEPAL_LENGTH_LARGE, PRICE_HIGH, TYPE_TULIP);
 
         Assertions.assertEquals(COLOR_RED.toString(), newFlower.getColor());
         Assertions.assertEquals(SEPAL_LENGTH_LARGE, newFlower.getSepalLength());
@@ -65,12 +66,17 @@ public class FlowerTest {
 
     @Test
     public void testCopyConstructor() {
-        Flower originalFlower = new Flower(COLOR_YELLOW, SEPAL_LENGTH_SMALL, PRICE_LOW, TYPE_CHAMOMILE);
+        Flower originalFlower = new Flower(COLOR_YELLOW,
+        SEPAL_LENGTH_SMALL, PRICE_LOW, TYPE_CHAMOMILE);
         Flower copiedFlower = new Flower(originalFlower);
 
-        Assertions.assertEquals(originalFlower.getColor(), copiedFlower.getColor());
-        Assertions.assertEquals(originalFlower.getSepalLength(), copiedFlower.getSepalLength());
-        Assertions.assertEquals(originalFlower.getPrice(), copiedFlower.getPrice());
-        Assertions.assertEquals(originalFlower.getFlowerType(), copiedFlower.getFlowerType());
+        Assertions.assertEquals(originalFlower.getColor(),
+        copiedFlower.getColor());
+        Assertions.assertEquals(originalFlower.getSepalLength(),
+        copiedFlower.getSepalLength());
+        Assertions.assertEquals(originalFlower.getPrice(),
+        copiedFlower.getPrice());
+        Assertions.assertEquals(originalFlower.getFlowerType(),
+        copiedFlower.getFlowerType());
     }
 }
