@@ -22,10 +22,12 @@ public class Store {
     for (FlowerBucket flowerBucket : flowerBuckets) {
         for (FlowerPack flowerPack : flowerBucket.getFlowerPacks()) {
             Flower flower = flowerPack.getFlower();
-            if ((flowerType == null || flower.getFlowerType() == flowerType) &&
-                (color == null || flower.getColor().equals(color.toString())) &&
-                (flower.getPrice() >= minPrice && flower.getPrice() <= maxPrice) &&
-                (flower.getSepalLength() >= minSepalLength && flower.getSepalLength() <= maxSepalLength)) {
+            if ((flowerType == null || flower.getFlowerType() == flowerType)
+            && (color == null || flower.getColor().equals(color.toString()))
+            && (flower.getPrice() >= minPrice
+            && flower.getPrice() <= maxPrice)
+            && (flower.getSepalLength() >= minSepalLength
+                && flower.getSepalLength() <= maxSepalLength)) {
                 matchingPacks.add(flowerPack);
             }
         }

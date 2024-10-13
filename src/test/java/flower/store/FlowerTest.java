@@ -11,15 +11,15 @@ public class FlowerTest {
     private static final Random RANDOM_GENERATOR = new Random();
     private static final int MAX_PRICE = 100;
     private static final int DEFAULT_SEPAL_LENGTH = 5;
-    private static final int TEST_SEPAL_LENGTH_1 = 8;
-    private static final int TEST_SEPAL_LENGTH_2 = 10;
-    private static final double TEST_PRICE_1 = 30.0;
-    private static final double TEST_PRICE_2 = 50.0;
-    private static final FlowerColor TEST_COLOR_1 = FlowerColor.RED;
-    private static final FlowerColor TEST_COLOR_2 = FlowerColor.YELLOW;
-    private static final FlowerType TEST_FLOWER_TYPE_1 = FlowerType.ROSE;
-    private static final FlowerType TEST_FLOWER_TYPE_2 = FlowerType.TULIP;
-    private static final FlowerType TEST_FLOWER_TYPE_3 = FlowerType.CHAMOMILE;
+    private static final int SEPAL_LENGTH_SMALL = 8;
+    private static final int SEPAL_LENGTH_LARGE = 10;
+    private static final double PRICE_LOW = 30.0;
+    private static final double PRICE_HIGH = 50.0;
+    private static final FlowerColor COLOR_RED = FlowerColor.RED;
+    private static final FlowerColor COLOR_YELLOW = FlowerColor.YELLOW;
+    private static final FlowerType TYPE_ROSE = FlowerType.ROSE;
+    private static final FlowerType TYPE_TULIP = FlowerType.TULIP;
+    private static final FlowerType TYPE_CHAMOMILE = FlowerType.CHAMOMILE;
 
     private Flower flower;
 
@@ -37,14 +37,14 @@ public class FlowerTest {
 
     @Test
     public void testColor() {
-        flower.setColor(TEST_COLOR_1);
-        Assertions.assertEquals(TEST_COLOR_1.toString(), flower.getColor());
+        flower.setColor(COLOR_RED);
+        Assertions.assertEquals(COLOR_RED.toString(), flower.getColor());
     }
 
     @Test
     public void testFlowerType() {
-        flower.setFlowerType(TEST_FLOWER_TYPE_1);
-        Assertions.assertEquals(TEST_FLOWER_TYPE_1, flower.getFlowerType());
+        flower.setFlowerType(TYPE_ROSE);
+        Assertions.assertEquals(TYPE_ROSE, flower.getFlowerType());
     }
 
     @Test
@@ -55,17 +55,17 @@ public class FlowerTest {
 
     @Test
     public void testConstructor() {
-        Flower newFlower = new Flower(TEST_COLOR_1, TEST_SEPAL_LENGTH_2, TEST_PRICE_2, TEST_FLOWER_TYPE_2);
+        Flower newFlower = new Flower(COLOR_RED, SEPAL_LENGTH_LARGE, PRICE_HIGH, TYPE_TULIP);
 
-        Assertions.assertEquals(TEST_COLOR_1.toString(), newFlower.getColor());
-        Assertions.assertEquals(TEST_SEPAL_LENGTH_2, newFlower.getSepalLength());
-        Assertions.assertEquals(TEST_PRICE_2, newFlower.getPrice());
-        Assertions.assertEquals(TEST_FLOWER_TYPE_2, newFlower.getFlowerType());
+        Assertions.assertEquals(COLOR_RED.toString(), newFlower.getColor());
+        Assertions.assertEquals(SEPAL_LENGTH_LARGE, newFlower.getSepalLength());
+        Assertions.assertEquals(PRICE_HIGH, newFlower.getPrice());
+        Assertions.assertEquals(TYPE_TULIP, newFlower.getFlowerType());
     }
 
     @Test
     public void testCopyConstructor() {
-        Flower originalFlower = new Flower(TEST_COLOR_2, TEST_SEPAL_LENGTH_1, TEST_PRICE_1, TEST_FLOWER_TYPE_3);
+        Flower originalFlower = new Flower(COLOR_YELLOW, SEPAL_LENGTH_SMALL, PRICE_LOW, TYPE_CHAMOMILE);
         Flower copiedFlower = new Flower(originalFlower);
 
         Assertions.assertEquals(originalFlower.getColor(), copiedFlower.getColor());
